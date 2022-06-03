@@ -17,9 +17,9 @@
     </properties>
 
     <scm>
-        <connection>scm:git:https://github.com/maping/java-maven-calculator-web-app.git</connection>
-        <developerConnection>scm:git:https://github.com/maping/java-maven-calculator-web-app.git</developerConnection>
-        <url>https://github.com/maping/java-maven-calculator-web-app.git</url>
+        <connection>scm:git:https://github.com/hritvikpatel4/java-maven-calculator-web-app.git</connection>
+        <developerConnection>scm:git:https://github.com/hritvikpatel4/java-maven-calculator-web-app.git</developerConnection>
+        <url>https://github.com/hritvikpatel4/java-maven-calculator-web-app.git</url>
         <tag>HEAD</tag>
     </scm>
 
@@ -178,11 +178,11 @@
                 <configuration>
                     <container>
                         <containerId>tomcat8x</containerId>
-                        <home>/Users/maping/apache/tomcat</home>
+                        <home>/Users/hripatel/apache/tomcat</home>
                     </container>
                     <configuration>
                         <type>existing</type>
-                        <home>/Users/maping/apache/tomcat</home>
+                        <home>/Users/hripatel/apache/tomcat</home>
                     </configuration>
                 </configuration>
             </plugin>
@@ -236,8 +236,8 @@
                 <configuration>
                     <username>username</username>
                     <password>password</password>
-                    <tagBase>https://github.com/maping/java-maven-calculator-web-app.git</tagBase>
-                    <branchBase>https://github.com/maping/java-maven-calculator-web-app.git</branchBase>
+                    <tagBase>https://github.com/hritvikpatel4/java-maven-calculator-web-app.git</tagBase>
+                    <branchBase>https://github.com/hritvikpatel4/java-maven-calculator-web-app.git</branchBase>
                 </configuration>
             </plugin>
 
@@ -265,6 +265,11 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>3.0.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>3.0.4</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

@@ -1,0 +1,33 @@
+node {
+   docker.image('maven:3.8.5-openjdk-8').inside('-v /root/.m2:/root/.m2 --network=tomcat') {
+      stage('Checkout Code') {
+         git 'https://github.com/hritvikpatel4/java-maven-calculator-web-app.git'
+      }
+      
+      /*
+         stage('Performance Tests') {
+            sh "mvn cargo:start verify cargo:stop"
+         }
+      */
+      
+      stage('Performance Tests') {
+         sh "mvn clean verify"
+      }
+
+      stage('Publish Reports') {
+         perfReport parsers: [[$class: 'JMeterCsvParser', glob: '**/target/jmeter/results/*.csv']]
+         // perfReport sourceDataFiles: '**/target/jmeter/results/*.csv'
+      }
+
+      stage('Upload Artifacts') {
+         archiveArtifacts '**/target/*.war'
+      }
+
+      stage('Deployment') {
+         timeout(time: 12, unit: 'HOURS') {
+            input message: 'Deploy this web app to production ?'
+         }
+         echo 'Deploy...'
+      }
+   }
+}

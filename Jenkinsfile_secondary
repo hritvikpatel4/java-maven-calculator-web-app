@@ -1,0 +1,16 @@
+node {
+   docker.image('maven:3.8.5-openjdk-8').inside('-v /root/.m2:/root/.m2') {
+      stage('Checkout Code') {
+         git 'https://github.com/hritvikpatel4/java-maven-calculator-web-app.git'
+      }
+      
+      stage('Integration Tests') {
+         sh "mvn clean integration-test"
+      }
+
+      stage('Publish Test Reports and Coverage') {
+         junit '**/target/surefire-reports/*ServiceIT.xml'
+         cobertura coberturaReportFile: '**/target/site/cobertura/coverage.xml'
+      }
+   }
+}
